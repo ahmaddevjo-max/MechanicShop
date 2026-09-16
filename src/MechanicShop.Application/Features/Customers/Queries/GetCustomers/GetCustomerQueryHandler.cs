@@ -1,0 +1,22 @@
+﻿using MechanicShop.Application.Common.Interfaces;
+using MechanicShop.Application.Features.Customers.Dtos;
+using MechanicShop.Application.Features.Customers.Mappers;
+using MechanicShop.Domain.Common.Results;
+
+using MediatR;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace MechanicShop.Application.Features.Customers.Queries.GetCustomers;
+
+public class GetCustomersQueryHandler(IAppDbContext context
+    )
+    : IRequestHandler<GetCustomersQuery, Result<List<CustomerDto>>>
+{
+    public async Task<Result<List<CustomerDto>>> Handle(GetCustomersQuery query, CancellationToken ct)
+    {
+
+        return await context.Customers.Include(c => c.vehicles).
+            Select(c => c.ToDto()).ToListAsync(ct);
+    }
+}

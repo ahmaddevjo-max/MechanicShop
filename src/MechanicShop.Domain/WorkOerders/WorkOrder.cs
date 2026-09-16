@@ -235,32 +235,5 @@ namespace MechanicShop.Domain.WorkOrders
             return Result.updated;
         }
 
-        public Result<Updated> RemoveRepairTask(Guid repairTaskId)
-        {
-            // 1. التأكد من أن أمر الصيانة قابل للتعديل
-            if (!IsEditable)
-            {
-                return WorkOrderErrors.Readonly;
-            }
-
-            // 2. فحص عدم مسح المهمة الأخيرة لضمان عدم ترك أمر الصيانة فارغاً
-            if (_repairTasks.Count <= 1)
-            {
-                return WorkOrderErrors.CannotRemoveLastRepairTask;
-            }
-
-           
-            var taskToRemove = _repairTasks.FirstOrDefault(r => r.Id == repairTaskId);
-            if (taskToRemove is null)
-            {
-                return WorkOrderErrors.RepairTaskNotFound;
-            }
-
-           
-            _repairTasks.Remove(taskToRemove);
-
-            return Result.updated;
-        } ////////👨🏿‍🏫 
-
     }
 }

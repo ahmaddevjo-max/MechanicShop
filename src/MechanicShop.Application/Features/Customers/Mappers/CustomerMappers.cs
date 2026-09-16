@@ -1,0 +1,53 @@
+﻿using MechanicShop.Application.Features.Customers.Dtos;
+using MechanicShop.Domain.Common;
+using MechanicShop.Domain.Customers;
+using MechanicShop.Domain.Customers.Vehicles;
+
+namespace MechanicShop.Application.Features.Customers.Mappers
+{
+    public static class CustomerMappers
+    {
+
+        public static CustomerDto ToDto(this Customer entity)
+        {
+            ArgumentNullException.ThrowIfNull(entity);
+
+            return new CustomerDto
+            {
+                CustomerId = entity.Id,
+                Name = entity.Name!,
+                Email = entity.Email!,
+                PhoneNumber = entity.PhoneNumber!,
+                Vehicles = entity.vehicles?.Select(v => v.ToDto()).ToList() ?? []
+            };
+
+        }
+
+
+
+
+        public static IEnumerable<CustomerDto> ToDto(IEnumerable<Customer> entities)
+        {
+
+            return [.. entities.Select(e => e.ToDto())];
+
+        }
+
+
+        public static VehicleDto ToDto(this Vehicle entity)
+        {
+            ArgumentNullException.ThrowIfNull(entity);
+
+            return new VehicleDto(entity.Id, entity.Make!, entity.Model!, entity.Year, entity.LicensePlate!);
+        }
+
+        public static List<VehicleDto> ToDtos(this IEnumerable<Vehicle> entities)
+        {
+            return [.. entities.Select(e => e.ToDto())];
+        }
+
+
+
+
+    }
+}
