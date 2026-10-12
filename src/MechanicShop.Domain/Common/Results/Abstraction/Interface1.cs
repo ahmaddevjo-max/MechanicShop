@@ -5,7 +5,7 @@
 
        public bool IsSuccess { get; }
 
-       public  List<Error> error { get; }
+       public  List<Error> Errors { get; }
 
        
     }

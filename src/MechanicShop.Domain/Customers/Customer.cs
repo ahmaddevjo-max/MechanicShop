@@ -105,7 +105,7 @@ namespace MechanicShop.Domain.Customers
 
                     if(updateVehicleResult.IsError)
                     {
-                        return updateVehicleResult.error;
+                        return updateVehicleResult.Errors;
                     }
 
                    

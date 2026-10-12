@@ -45,7 +45,7 @@ namespace MechanicShop.Application.Features.Customers.Commands.CreateCustomer
 
                 if(vehicleResult.IsError)
                 {                 
-                    return vehicleResult.error;
+                    return vehicleResult.Errors;
                 }
 
                 vehicles.Add(vehicleResult.Value);
@@ -64,7 +64,7 @@ namespace MechanicShop.Application.Features.Customers.Commands.CreateCustomer
                 );
 
             if (createCustomerResult.IsError)
-                return createCustomerResult.error;
+                return createCustomerResult.Errors;
 
 
             context.Customers.Add(createCustomerResult.Value);

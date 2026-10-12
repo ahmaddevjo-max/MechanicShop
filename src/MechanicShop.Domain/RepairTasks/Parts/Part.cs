@@ -27,7 +27,7 @@ public sealed class Part : AuditableEntity
             return PartErrors.NameRequired;
         }
 
-        if (cost < 0 || cost > 10000)
+        if (cost <= 0 || cost > 10000)
         {
             return PartErrors.CostInvalid;
         }

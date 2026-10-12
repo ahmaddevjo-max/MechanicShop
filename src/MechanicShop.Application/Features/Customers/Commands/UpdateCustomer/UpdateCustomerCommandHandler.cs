@@ -40,7 +40,7 @@ namespace MechanicShop.Application.Features.Customers.Commands.UpdateCustomer
 
                 if(vehicleResult.IsError)
                 {
-                    return vehicleResult.error;
+                    return vehicleResult.Errors;
                 }
 
 
@@ -55,7 +55,7 @@ namespace MechanicShop.Application.Features.Customers.Commands.UpdateCustomer
 
             if (updateCustomerResult.IsError)
             {
-                return updateCustomerResult.error;
+                return updateCustomerResult.Errors;
             }
 
 
@@ -64,7 +64,7 @@ namespace MechanicShop.Application.Features.Customers.Commands.UpdateCustomer
 
             if(updateCustomerResult.IsError)
             {
-                return updateCustomerResult.error;
+                return updateCustomerResult.Errors;
             }
 
 

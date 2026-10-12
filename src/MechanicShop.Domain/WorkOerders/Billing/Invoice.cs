@@ -1,8 +1,8 @@
 ﻿
 using MechanicShop.Domain.Common;
 using MechanicShop.Domain.Common.Results;
+using MechanicShop.Domain.Workorders;
 using MechanicShop.Domain.Workorders.Billing;
-using MechanicShop.Domain.WorkOrders;
 
 namespace MechanicShop.Domain.WorkOerders.Billing
 {
@@ -17,7 +17,7 @@ namespace MechanicShop.Domain.WorkOerders.Billing
 
         public DateTimeOffset? PaidAt { get; private set; }
 
-        public WorkOrder? WorkOrder { get; set; }
+        public WorkOrders? WorkOrder { get; set; }
 
         private readonly List<InvoiceLineItem> _lineItems = [];
         public IReadOnlyList<InvoiceLineItem> LineItems => _lineItems;

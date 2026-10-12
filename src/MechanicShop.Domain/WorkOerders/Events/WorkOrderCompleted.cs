@@ -2,7 +2,7 @@
 
 namespace MechanicShop.Domain.WorkOerders.Events
 {
-    public sealed class WorkeOrderCompleted : DomainEvent
+    public sealed class OnWorkOrderCompleted : DomainEvent
     { 
         public Guid WorkOrderId { get; set; }
     }

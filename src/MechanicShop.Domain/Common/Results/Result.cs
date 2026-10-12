@@ -29,7 +29,7 @@ namespace MechanicShop.Domain.Common.Results
 
         public bool IsError => !IsSuccess;
 
-        public List<Error> error => IsError ? _errors! : [];
+        public List<Error> Errors => IsError ? _errors! : [];
 
         public TValue Value => IsSuccess ? _value! : default!;
 
@@ -115,7 +115,7 @@ namespace MechanicShop.Domain.Common.Results
 
 
         public  TNextValue Match<TNextValue>(Func<TValue ,TNextValue> onValue , Func<List<Error> ,TNextValue>onError)
-            => IsSuccess ? onValue(Value) : onError(error);
+            => IsSuccess ? onValue(Value) : onError(Errors);
 
 
     }

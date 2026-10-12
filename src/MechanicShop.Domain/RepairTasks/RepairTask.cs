@@ -74,7 +74,7 @@ public sealed class RepairTask : AuditableEntity
                 var updatePartResult = existing.Update(incoming.Name, incoming.Cost, incoming.Quantity);
                 if (updatePartResult.IsError)
                 {
-                    return updatePartResult.error;
+                    return updatePartResult.Errors;
                 }
             }
         }
